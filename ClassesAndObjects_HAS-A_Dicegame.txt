@@ -1,0 +1,226 @@
+Class And Objects:
+
+package com.th;
+
+public class Book
+{
+    int book_id;
+    int book_price;
+    String book_name;
+    //method / constructor is used to initialise the object
+
+    public Book(int book_id, int book_price, String book_name) {
+        this.book_id = book_id;
+        this.book_price = book_price;
+        this.book_name = book_name;
+    }
+    // toString method / print the book object
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "book_id=" + book_id +
+                ", book_price=" + book_price +
+                ", book_name='" + book_name + '\'' +
+                '}';
+    }
+}
+
+package com.th;
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        System.out.println("enter the details:");
+//        int book_id1 = sc.nextInt();
+//        int book_price1 = sc.nextInt();
+//        String book_name1 = sc.next();
+//        Book book2 = new Book(book_id1,book_price1,book_name1);
+//        System.out.println(book2);
+
+
+
+//        Book book1 = new Book(100,300,"java");
+//        System.out.println(book1); // toString is called implicitly when object printed
+//        Book book2 = new Book(200,400,"computer organisation");
+//        System.out.println(book2);
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("enter the elements of array:");
+        int len = sc.nextInt();
+        Book[] arr = new Book[len];
+        for(int i=0;i<arr.length;i++)
+        {
+            System.out.println("enter the book"+(i+1));
+            int book_id = sc.nextInt();
+            sc.nextLine();
+            String book_name = sc.nextLine();
+            int book_price = sc.nextInt();
+            arr[i] = new Book(book_id,book_price,book_name);
+        }
+        for(int i=0;i< arr.length;i++)
+        {
+            System.out.println(arr[i]);
+        }
+
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------
+
+HAS-A:
+
+package com.th;
+
+public class Address {
+    private  int door_no;
+    private String city;
+    private String state;
+    private int pin_code;
+
+    public Address(int door_no, String city, String state, int pin_code) {
+        this.door_no = door_no;
+        this.city = city;
+        this.state = state;
+        this.pin_code = pin_code;
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "door_no=" + door_no +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", pin_code=" + pin_code +
+                '}';
+    }
+}
+
+package com.th;
+
+public class Person {
+    private int person_id;
+    private String person_name;
+    private Address paddress;
+
+    public Person(int person_id, String person_name, Address paddress) {
+        this.person_id = person_id;
+        this.person_name = person_name;
+        this.paddress = paddress;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "person_id=" + person_id +
+                ", person_name='" + person_name + '\'' +
+                ", paddress=" + paddress +
+                '}';
+    }
+}
+
+
+package com.th;
+
+public class Main {
+
+    public static void main(String[] args) {
+	    Address address = new Address(17,"ckm","karnataka",5);
+        Person person = new Person(1000,"tasmi",address);
+        System.out.println(person);
+    }
+}
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+Dice Game:
+
+
+package com.th;
+
+import java.util.Random;
+
+public class Dice {
+    private int f_value;
+
+    public int roll()
+    {
+        Random ram = new Random();
+        f_value = ((int) ram.nextInt(5)+1);
+        return f_value;
+    }
+
+    public int getF_value() {
+        return f_value;
+    }
+}
+
+package com.th;
+
+public class Player {
+    Dice d1;
+    Dice d2;
+    public Player()
+    {
+        d1 = new Dice();
+        d2 = new Dice();
+
+    }
+    public  int play()
+    {
+        return (d1.roll()+ d2.roll());
+    }
+    public int getD1Score()
+    {
+        return (d1.getF_value());
+    }
+    public int getD2Score()
+    {
+        return (d2.getF_value());
+    }
+
+}
+
+package stadium;
+
+import com.th.Player;
+
+public class Main {
+
+    public static void main(String[] args){
+        Player p1 = new Player();
+        int p1score = p1.play();
+        int p1d1score = p1.getD1Score();
+        int p1d2score = p1.getD2Score();
+
+        System.out.println("p1 scored "+p1score);
+        System.out.println("p1d1: "+p1d1score+" "+"p1d2: "+p1d2score);
+
+
+
+        Player p2 = new Player();
+        int p2score = p2.play();
+        int p2d1score = p2.getD1Score();
+        int p2d2score = p2.getD2Score();
+        System.out.println("p2 scored: "+p2score);
+        System.out.println("p2d1: "+p2d1score+" "+"p2d2: "+p2d2score);
+
+        if(p1score > p2score)
+        {
+            System.out.println("P1 won the game");
+        }
+        else if(p1score == p2score)
+        {
+            System.out.println("game is draw");
+        }
+        else
+        {
+            System.out.println("P2 won the game");
+        }
+
+
+    }
+}
+---------------------------------------------------------------------------------------------------------------------------------------
+
