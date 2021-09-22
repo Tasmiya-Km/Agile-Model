@@ -1,0 +1,188 @@
+Constructor Overloading:
+
+package com.torry.circle;
+
+public class Circle1 {
+    private double radius;
+    private String colour;
+
+    // Non paramatized constructor
+    public Circle1() {
+//        this.radius = 3.5;
+//        this.colour = "blue";
+          this(3.5,"blue"); // invoking fully paramatized constructor
+    }
+
+    public Circle1(double radius) {
+//        this.radius = radius;
+          this(radius,"brown"); // invoking fully paramatized constructor
+    }
+
+    public Circle1(String colour) {
+//        this.colour = colour;
+         this(6.5,colour);     // invoking fully paramatized constructor
+    }
+
+    // complete paramatized constructor
+    public Circle1(double radius, String colour) {
+        this.radius = radius;
+        this.colour = colour;
+    }
+
+    @Override
+    public String toString() {
+        return "Circle1{" +
+                "radius=" + radius +
+                ", colour='" + colour + '\'' +
+                '}';
+    }
+}
+
+package com.torry;
+
+import com.torry.circle.Circle1;
+
+public class Main {
+    public static void main(String args[])
+    {
+        Circle1 c1 = new Circle1();
+        System.out.println(c1);
+
+        Circle1 c2 = new Circle1(5.1);
+        System.out.println(c2);
+
+        Circle1 c3 = new Circle1("brown");
+        System.out.println(c3);
+
+        Circle1 c4 = new Circle1(7.6,"pink");
+        System.out.println(c4);
+
+    }
+}
+-------------------------------------------------------------------------------------------------------------------------------------
+
+Static:
+
+package com.th.spack;
+
+public class person {
+  public static int count;
+//    private static int count;
+    private int pid;
+    private String pname;
+    static
+    {
+        int count = 0;
+    }
+
+    public person(int pid, String pname) {
+        this.pid = pid;
+        this.pname = pname;
+        ++count;
+    }
+
+    @Override
+    public String toString() {
+        return "person{" +
+                "pid=" + pid +
+                ", pname='" + pname + '\'' +
+                '}';
+    }
+
+    public static int getCount() {
+        return count;
+    }
+
+
+}
+
+package main;
+
+
+import com.th.spack.person;
+
+public class Main {
+    public static void main(String[] args)
+    {
+        person p1 = new person(1,"tasmi");
+        person p2 = new person(2,"tasma");
+//        System.out.println(person.getCount());
+        System.out.println(person.count);
+
+
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+Function overloading:
+
+
+package com.th;
+
+import utility.Average;
+import utility.Summation;
+import utility.Tax;
+
+public class Main {
+
+    public static void main(String[] args) {
+//        Summation sum = new Summation();
+//        System.out.println(sum.add(3,4));
+//        System.out.println(sum.add(4,3.12F,12.56));
+//        System.out.println(sum.add("good","afternoon"));
+//        Tax tax = new Tax();
+//        System.out.println(tax.calc_tax(20000,'c'));
+//        System.out.println(tax.calc_tax(20000));
+
+        Average avg = new Average();
+        System.out.println(avg.cal_avg(20,20));
+
+
+    }
+}
+
+package utility;
+
+public class Average {
+    public double cal_avg(int ...numbers)
+    {
+        int sum = 0;
+        for(int n: numbers)
+        {
+            sum+=n;
+        }
+        return (sum/numbers.length);
+    }
+}
+
+package utility;
+
+public class Summation {
+    public int add(int x,int y)
+    {
+            return (x+y);
+    }
+    public double add(int x,float y,double z)
+    {
+           return (x+y+z);
+    }
+    public String add (String str1,String str2)
+    {
+        return (str1+" "+str2);
+    }
+
+}
+
+package utility;
+
+public class Tax {
+    public double calc_tax(long amt,char status)
+    {
+        return (amt*0.1);
+    }
+    public double calc_tax(long amt)
+    {
+        return (amt*0.25);
+    }
+}
+-------------------------------------------------------------------------------------------------------
