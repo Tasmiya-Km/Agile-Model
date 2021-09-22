@@ -1,0 +1,189 @@
+looping:
+
+package com.th;
+public class Main
+{
+
+    public static void main(String[] args)
+    {
+//	    for(int i=0;++i<=10;i++)
+//        {
+//            System.out.println(i);
+//        }
+
+
+//        for(int i=0;i++<=10;i++)
+//        {
+//            System.out.println(i);
+
+//        find the maximum and minimum of the array:
+//          int[] arr = {60,20,30,40,50};
+//          int max = arr[0];
+//          int min = arr[0];
+//          for (int i=0;i< arr.length;i++)
+//          {
+//             if (arr[i] > max)
+//             {
+//                 max = arr[i];
+//             }
+//             if (arr[i] < min)
+//             {
+//                 min = arr[i];
+//             }
+//          }
+//        System.out.println("maximum value is "+max);
+//        System.out.println("minimum value is "+min);
+
+
+// concat using command line arguments
+//        String str1 = args[0];
+//        String str2 = args[1];
+//        System.out.println(str1+" "+ str2);
+
+
+//        addition of numbers using command line arguments
+//        String str1 = args[0];
+//        String str2 = args[1];
+//        String str3 = args[2];
+//        int n1 = Integer.parseInt(str1);
+//        int n2 = Integer.parseInt(str2);
+//        int n3 = Integer.parseInt(str3);
+//        System.out.println("sum = "+(n1+n2+n3));
+
+
+//
+    }
+}
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Sorting:
+
+package com.th;
+
+import java.util.Scanner;
+
+public class Main
+{
+
+    public static void main(String[] args)
+    {
+//	 Bubble sort
+//    read the array : (how many elements are there in array)
+      int len = Integer.parseInt(args[0]);
+//    declaration of array
+      int[] arr = new int[len];
+      Scanner sc = new Scanner(System.in);
+        System.out.println("enter the elements of array:");
+      for(int i=0;i<arr.length;i++)
+      {
+        arr[i] = sc.nextInt();
+      }
+//      sorting of array
+        for (int i=0;i< arr.length-1;i++) // it is used for passes
+        {
+            for(int j=0;j< arr.length-i-1;j++) // comparision
+            {
+                    if (arr[j] < arr[j+1])
+                    {
+                        int temp = arr[j];
+                        arr[j] = arr[j+1];
+                        arr[j+1] = temp;
+                    }
+            }
+        }
+        System.out.println("the sorted array:");
+        for(int i=0;i<arr.length;i++)
+        {
+            System.out.print(arr[i]+" ");
+        }
+    }
+}
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+Access Modifiers:
+
+Customer
+
+package com.th;
+
+public class Customer {
+    private int cust_id;
+    private String cust_name;
+    private int unitscustomed;
+    private int unit_price;
+
+    public Customer(int cust_id, String cust_name, int unitscustomed, int unit_price) {
+        this.cust_id = cust_id;
+        this.cust_name = cust_name;
+        this.unitscustomed = unitscustomed;
+        this.unit_price = unit_price;
+    }
+    private int  cal_billamt()
+    {
+        return (unitscustomed * unit_price);
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "cust_id=" + cust_id +
+                ", cust_name='" + cust_name + '\'' +
+                ", unitscustomed=" + unitscustomed +
+                ", unit_price=" + unit_price +", Bill="+cal_billamt()+
+                '}';
+    }
+
+}
+
+Student
+
+package com.th;
+
+// encapsulation demo
+public class Student {
+    private int st_id;
+    private String sname;
+    private int m1,m2,m3;
+
+    public Student(int st_id, String sname, int m1, int m2, int m3) {
+        this.st_id = st_id;
+        this.sname = sname;
+        this.m1 = m1;
+        this.m2 = m2;
+        this.m3 = m3;
+    }
+    private double cal_percentage()
+    {
+        return (m1+m2+m3)/3;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "st_id=" + st_id +
+                ", sname='" + sname + '\'' +
+                ", m1=" + m1 +
+                ", m2=" + m2 +
+                ", m3=" + m3 +", percentage ="+cal_percentage()+
+                '}';
+    }
+}
+
+Main
+
+package com.th;
+
+public class Main {
+
+    public static void main(String[] args) {
+//	 Customer c = new Customer(1,"tasmiya",20,500);
+//        System.out.println(c);
+
+        Student s = new Student(1,"tasmi",80,85,70);
+        System.out.println(s);
+    }
+}
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
